@@ -185,4 +185,19 @@ function handleNavigation() {
     filterPosts(currentCategory);
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    clearLocalStorageAfterDelay();
+    handleNavigation();
+
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            const sectionId = this.getAttribute('onclick').match(/'([^']+)'/)[1];
+            showSection(sectionId);
+            event.preventDefault();
+        });
+    });
+});
+
+
 
